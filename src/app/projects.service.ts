@@ -21,7 +21,9 @@ export class ProjectsService {
     return this.httpClient.post<Project>(
       this.urlPrefix + '/api/projects',
       newProject,
-      { responseType: 'json' }
+      {
+        responseType: 'json',
+      }
     );
   }
 
@@ -29,13 +31,22 @@ export class ProjectsService {
     return this.httpClient.put<Project>(
       this.urlPrefix + '/api/projects',
       existingProject,
-      { responseType: 'json' }
+      {
+        responseType: 'json',
+      }
     );
   }
 
   deleteProject(ProjectID: number): Observable<string> {
     return this.httpClient.delete<string>(
       this.urlPrefix + '/api/projects?ProjectID=' + ProjectID
+    );
+  }
+
+  SearchProjects(searchBy: string, searchText: string): Observable<Project[]> {
+    return this.httpClient.get<Project[]>(
+      this.urlPrefix + '/api/projects/search/' + searchBy + '/' + searchText,
+      { responseType: 'json' }
     );
   }
 }
