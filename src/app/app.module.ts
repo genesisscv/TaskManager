@@ -4,9 +4,10 @@ import { AdminModule } from './admin/admin.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, LoginComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, AdminModule],
   providers: [],
   bootstrap: [AppComponent],

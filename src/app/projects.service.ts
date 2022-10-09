@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Project } from './project';
+// import { map } from 'rxjs/operators';
+// import { Data } from 'popper.js';
 
 @Injectable({
   providedIn: 'root',
@@ -15,6 +17,18 @@ export class ProjectsService {
     return this.httpClient.get<Project[]>(this.urlPrefix + '/api/projects', {
       responseType: 'json',
     });
+
+    // The arrow function below executes once for one response
+    // and the "data" parameter represents the actual response,
+    // which is received from the server. e.g: "projects array"
+    // .pipe(
+    //   map((data: Project[]) => {
+    //     for (let i = 0; i < data.length, i++; ) {
+    //       data[i].teamSize = data[i].teamSize * 100;
+    //     }
+    //     return data;
+    //   })
+    // )
   }
 
   insertProject(newProject: Project): Observable<Project> {
