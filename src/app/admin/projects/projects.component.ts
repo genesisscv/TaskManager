@@ -20,9 +20,15 @@ export class ProjectsComponent implements OnInit {
   constructor(private projectsService: ProjectsService) {}
 
   ngOnInit() {
-    this.projectsService.getAllProjects().subscribe((response: Project[]) => {
-      this.projects = response;
-    });
+    this.projectsService.getAllProjects().subscribe(
+      (response: Project[]) => {
+        this.projects = response;
+      },
+      (error) => {
+        console.log(error);
+        alert('Authentication failed');
+      }
+    );
   }
 
   onSaveClick() {
