@@ -60,7 +60,7 @@ data = {
     },
     {
       clientLocationID: 3,
-      clientLocationName: "New Jersey",
+      clientLocationName: "New Jersy",
     },
   ],
 };
