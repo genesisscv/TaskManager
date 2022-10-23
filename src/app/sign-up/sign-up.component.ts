@@ -74,20 +74,20 @@ export class SignUpComponent implements OnInit {
     // });
 
     //reset
-    this.signUpForm.reset();
+    // this.signUpForm.reset();
 
     //reset with Parameters
-    this.signUpForm.reset({
-      firstName: 'Adam',
-      lastName: 'Smith',
-      email: 'smith@gmail.com',
-    });
+    // this.signUpForm.reset({
+    //   firstName: 'Adam',
+    //   lastName: 'Smith',
+    //   email: 'smith@gmail.com',
+    // });
   }
 
   onAddSkill() {
     var formGroup = new FormGroup({
-      skillName: new FormControl(null),
-      level: new FormControl(null),
+      skillName: new FormControl(null, [Validators.required]),
+      level: new FormControl(null, [Validators.required]),
     });
     (<FormArray>this.signUpForm.get('skills')).push(formGroup);
   }
