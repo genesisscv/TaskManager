@@ -18,6 +18,18 @@
                 placeholder="First Name"
                 class="form-control"
                 formControlName="firstName"
+                [ngClass]="{
+                  'is-invalid':
+                    signUpForm.get('personName.lastName').invalid &&
+                    (signUpForm.get('personName.lastName').dirty ||
+                      signUpForm.get('personName.lastName').touched ||
+                      signUpForm.submitted),
+                  'is-valid':
+                    signUpForm.get('personName.lastName').valid &&
+                    (signUpForm.get('personName.lastName').dirty ||
+                      signUpForm.get('personName.lastName').touched ||
+                      signUpForm.submitted)
+                }"
               />
             </div>
           </div>

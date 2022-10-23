@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import {
+  FormArray,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { CountriesService } from '../countries.service';
 import { Country } from '../country';
 
@@ -23,16 +29,19 @@ export class SignUpComponent implements OnInit {
 
     this.signUpForm = this.formBuilder.group({
       personName: this.formBuilder.group({
-        firstName: null,
-        lastName: null,
+        firstName: [null, [Validators.required, Validators.minLength(2)]],
+        lastName: [null, [Validators.required, Validators.minLength(2)]],
       }),
 
-      email: null,
-      mobile: null,
-      dateOfBirth: null,
-      gender: null,
-      countryID: null,
-      receiveNewsLetters: null,
+      email: [null, [Validators.required, Validators.email]],
+      mobile: [
+        null,
+        [Validators.required, Validators.pattern('/^[789]d{9}$/')],
+      ],
+      dateOfBirth: [null, [Validators.required]],
+      gender: [null, [Validators.required]],
+      countryID: [null, [Validators.required]],
+      receiveNewsLetters: [null],
       skills: this.formBuilder.array([]),
     });
 
@@ -42,7 +51,8 @@ export class SignUpComponent implements OnInit {
   }
   onSubmitClick() {
     //Display current form value
-    //console.log(this.signUpForm.value);
+    this.signUpForm['submitted'] = true;
+    console.log(this.signUpForm);
 
     //setValue
     // this.signUpForm.setValue({
