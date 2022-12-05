@@ -20,17 +20,41 @@
                 formControlName="firstName"
                 [ngClass]="{
                   'is-invalid':
-                    signUpForm.get('personName.lastName').invalid &&
-                    (signUpForm.get('personName.lastName').dirty ||
-                      signUpForm.get('personName.lastName').touched ||
+                    signUpForm.get('personName.firstName').invalid &&
+                    (signUpForm.get('personName.firstName').dirty ||
+                      signUpForm.get('personName.firstName').touched ||
                       signUpForm.submitted),
                   'is-valid':
-                    signUpForm.get('personName.lastName').valid &&
-                    (signUpForm.get('personName.lastName').dirty ||
-                      signUpForm.get('personName.lastName').touched ||
+                    signUpForm.get('personName.firstName').valid &&
+                    (signUpForm.get('personName.firstName').dirty ||
+                      signUpForm.get('personName.firstName').touched ||
                       signUpForm.submitted)
                 }"
               />
+
+              <span
+                class="text-danger"
+                *ngIf="
+                  signUpForm.get('personName.firstName').invalid &&
+                  (signUpForm.get('personName.firstName').dirty ||
+                    signUpForm.get('personName.firstName').touched ||
+                    signUpForm.submitted) &&
+                  signUpForm.get('personName.firstName').errors?.required
+                "
+                >First name can't be blank</span
+              >
+
+              <span
+                class="text-danger"
+                *ngIf="
+                  signUpForm.get('personName.firstName').invalid &&
+                  (signUpForm.get('personName.firstName').dirty ||
+                    signUpForm.get('personName.firstName').touched ||
+                    signUpForm.submitted) &&
+                  signUpForm.get('personName.firstName').errors?.minlength
+                "
+                >First name should contain at least 2 characters</span
+              >
             </div>
           </div>
 
@@ -59,6 +83,29 @@
                       signUpForm.submitted)
                 }"
               />
+              <span
+                class="text-danger"
+                *ngIf="
+                  signUpForm.get('personName.lastName').invalid &&
+                  (signUpForm.get('personName.lastName').dirty ||
+                    signUpForm.get('personName.lastName').touched ||
+                    signUpForm.submitted) &&
+                  signUpForm.get('personName.lastName').errors?.required
+                "
+                >Last name can't be blank</span
+              >
+
+              <span
+                class="text-danger"
+                *ngIf="
+                  signUpForm.get('personName.lastName').invalid &&
+                  (signUpForm.get('personName.lastName').dirty ||
+                    signUpForm.get('personName.lastName').touched ||
+                    signUpForm.submitted) &&
+                  signUpForm.get('personName.lastName').errors?.minlength
+                "
+                >Last name should contain at least 2 characters</span
+              >
             </div>
           </div>
 
@@ -85,6 +132,30 @@
                       signUpForm.submitted)
                 }"
               />
+
+              <span
+                class="text-danger"
+                *ngIf="
+                  signUpForm.get('email').invalid &&
+                  (signUpForm.get('email').dirty ||
+                    signUpForm.get('email').touched ||
+                    signUpForm.submitted) &&
+                  signUpForm.get('email').errors?.required
+                "
+                >Email can't be blank</span
+              >
+
+              <span
+                class="text-danger"
+                *ngIf="
+                  signUpForm.get('email').invalid &&
+                  (signUpForm.get('email').dirty ||
+                    signUpForm.get('email').touched ||
+                    signUpForm.submitted) &&
+                  signUpForm.get('email').errors?.email
+                "
+                >Email is invalid</span
+              >
             </div>
           </div>
 
